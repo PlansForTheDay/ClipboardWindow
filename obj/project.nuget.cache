@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "/eG7BWVDljyXTlt4Wb5odYuGHByfIW42KcZoWHe9iuk1KybS9jfzXB9xzn1bc3sCkX0hdB99gSwG/wKA9k/7/g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Чивкунов Данила\\source\\repos\\ClipboardWindow\\ClipboardWindow.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Чивкунов Данила\\.nuget\\packages\\hardcodet.notifyicon.wpf\\1.1.0\\hardcodet.notifyicon.wpf.1.1.0.nupkg.sha512",
+    "C:\\Users\\Чивкунов Данила\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.22621.755\\microsoft.windows.sdk.contracts.10.0.22621.755.nupkg.sha512",
+    "C:\\Users\\Чивкунов Данила\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Чивкунов Данила\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0\\system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+    "C:\\Users\\Чивкунов Данила\\.nuget\\packages\\system.runtime.windowsruntime.ui.xaml\\4.6.0\\system.runtime.windowsruntime.ui.xaml.4.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
