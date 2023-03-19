@@ -31,10 +31,11 @@ namespace ClipboardWindow
 
         public static void LoadTextWindow(string text)
         {
-            ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer();
-
-            objectFromBuffer.MaxHeight = SystemParameters.FullPrimaryScreenHeight;
-            objectFromBuffer.MaxWidth = SystemParameters.FullPrimaryScreenWidth;
+            ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer
+            {
+                MaxHeight = SystemParameters.FullPrimaryScreenHeight,
+                MaxWidth = SystemParameters.FullPrimaryScreenWidth
+            };
 
             var cbItem = new TextBox()
             {
@@ -54,10 +55,11 @@ namespace ClipboardWindow
 
         public static void LoadImageWindow(BitmapSource bitmap)
         {
-            ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer();
-
-            objectFromBuffer.MaxHeight = SystemParameters.FullPrimaryScreenHeight;
-            objectFromBuffer.MaxWidth = SystemParameters.FullPrimaryScreenWidth;
+            ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer
+            {
+                MaxHeight = SystemParameters.FullPrimaryScreenHeight,
+                MaxWidth = SystemParameters.FullPrimaryScreenWidth
+            };
 
             var cbItem = new Image()
             {

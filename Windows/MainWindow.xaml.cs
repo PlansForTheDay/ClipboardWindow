@@ -21,7 +21,6 @@ using Clipboard = System.Windows.Clipboard;
 using IDataObject = System.Windows.IDataObject;
 
 using System.Drawing;
-
 using System.ComponentModel;
 using System.Windows.Interop;
 
@@ -36,34 +35,34 @@ namespace ClipboardWindow
         //[return: MarshalAs(UnmanagedType.Bool)]
         //public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 
-        //public const int MOD_ALT = 0x1;
-        //public const int MOD_CONTROL = 0x2;
-        //public const int MOD_SHIFT = 0x4;
-        //public const int MOD_WIN = 0x8;
-        //public const int WM_HOTKEY = (int)Keys.P;
+        public const int MOD_ALT = 0x1;
+        public const int MOD_CONTROL = 0x2;
+        public const int MOD_SHIFT = 0x4;
+        public const int MOD_WIN = 0x8;
+        public const int WM_HOTKEY = (int)Keys.P;
 
-        //protected override void OnSourceInitialized(EventArgs e)
-        //{
-        //    base.OnSourceInitialized(e);
-        //    HwndSource source = HwndSource.FromHwnd(new WindowInteropHelper(this).Handle);
-        //    source.AddHook(new HwndSourceHook(WndProc));
-        //    //HwndSource source = PresentationSource.FromVisual(this) as HwndSource;
-        //    //source.AddHook(WndProc);
-        //}
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            HwndSource source = HwndSource.FromHwnd(new WindowInteropHelper(this).Handle);
+            source.AddHook(new HwndSourceHook(WndProc));
+            //HwndSource source = PresentationSource.FromVisual(this) as HwndSource;
+            //source.AddHook(WndProc);
+        }
 
-        //private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        //{
-        //    //System.Windows.Forms.MessageBox.Show("Запустился WndProc");
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            //System.Windows.Forms.MessageBox.Show("Запустился WndProc");
 
-        //    if (msg == WM_HOTKEY)
-        //    {
-        //        IDataObject clipboardList = Clipboard.GetDataObject();
-        //        SeizureOfData.LoadObjectWindow(clipboardList);
-        //    }
+            if (msg == WM_HOTKEY)
+            {
+                IDataObject clipboardList = Clipboard.GetDataObject();
+                SeizureOfData.LoadObjectWindow(clipboardList);
+            }
 
-        //    //WndProc(hwnd, msg, wParam, lParam, ref handled);
-        //    return IntPtr.Zero;
-        //}
+            //WndProc(hwnd, msg, wParam, lParam, ref handled);
+            return IntPtr.Zero;
+        }
 
 
         // это команда в теории принимает все сообщения от винды, но видимо расположение "приёмника" находися в определённом месте, из-за чего и функцию нужно переопределить именно там 
@@ -111,18 +110,31 @@ namespace ClipboardWindow
 
         private void informstionButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowInformation informationWindow = new WindowInformation();
-            informationWindow.Owner = this;
+            WindowInformation informationWindow = new WindowInformation { Owner = this };
 
             informationWindow.Show();
 
             Hide();
         }
 
+        private void settingButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings settings = new Settings
+            {
+                Owner = this
+            };
+
+            settings.Show();
+
+            Hide();
+        }
+
         private void clipboardButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowClipboard clipboardWindow = new WindowClipboard();
-            clipboardWindow.Owner = this;
+            WindowClipboard clipboardWindow = new WindowClipboard
+            {
+                Owner = this
+            };
 
             clipboardWindow.Show();
 
@@ -149,6 +161,5 @@ namespace ClipboardWindow
         {
 
         }
-
     }
 }

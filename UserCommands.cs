@@ -12,8 +12,10 @@ namespace ClipboardWindow
         static UserCommands()
         {
             // Можно прописать горячие клавиши по умолчанию
-            InputGestureCollection inputs = new InputGestureCollection();
-            inputs.Add(new KeyGesture(Key.S, ModifierKeys.Control, "Ctrl+S"));
+            InputGestureCollection inputs = new InputGestureCollection
+            {
+                new KeyGesture(Key.P, ModifierKeys.Alt, "Alt+P")
+            };
 
             SomeCommand = new RoutedUICommand("Some", "SomeCommand", typeof(UserCommands), inputs);
         }

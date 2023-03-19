@@ -45,7 +45,7 @@
             <Grid x:Name="controlButtonPanel" 
                   MouseLeftButtonDown="controlButtonPanel_MouseLeftButtonDown" 
                   Grid.Row="0" >
-                <Label Content="Основное меню" FontFamily="Cascadia Code SemiBold" FontSize="13" Foreground="{StaticResource TopText}"/>
+                <Label Content="Основное меню" FontFamily="Cascadia Code SemiBold" FontSize="13" Foreground="{DynamicResource TopText}"/>
 
                 <StackPanel x:Name="controlButton" 
                             Orientation="Horizontal" 
@@ -91,7 +91,9 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="settingButton" 
                                         HorizontalAlignment="Left" 
-                                        Template="{StaticResource menuButtons}">
+                                        Template="{StaticResource menuButtons}" 
+                                        Click="settingButton_Click"
+                                        >
                                     <Button.Content>
                                         <Image Source="Resource\settingsButton.ico" Margin="5" HorizontalAlignment="Center"/>
                                     </Button.Content>
