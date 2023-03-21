@@ -10,6 +10,7 @@
         <Image x:Key="Information" Source="/Windows/Resource/informationButton.ico"/>
         <Image x:Key="Settings" Source="/Windows/Resource/settingsButton.ico"/>
         <Image x:Key="Update" Source="/Windows/Resource/update.png"/>
+        <Image x:Key="Eraser" Source="/Windows/Resource/eraser.ico"/>
         <ImageSource x:Key="Text">Windows\Resource\text.ico</ImageSource>
         <ImageSource x:Key="Image">Windows\Resource\image.ico</ImageSource>
 
@@ -92,7 +93,7 @@
             <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
             <Setter Property="BorderBrush" Value="{StaticResource WindowBorder}"/>
         </Style>
-        
+
         <Style TargetType="TextBlock" x:Key="menuTextBox">
             <Setter Property="Margin" Value="5,3"/>
             <Setter Property="FontSize" Value="11"/>
@@ -137,6 +138,34 @@
             <Setter Property="ScrollViewer.BorderThickness" Value="0.5"/>
             <Setter Property="ScrollViewer.Background" Value="Transparent"/>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="NonObject">
+            <Setter Property="Text" Value="Буфер обмена не содержит объектов"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Cascadia Code SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Width" Value="166"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="{StaticResource TopText}"/>
+            <Setter Property="Margin" Value="0,45"/>
+        </Style>
+
+        <Style TargetType="GroupBox" x:Key="buttonsBlock">
+            <Setter Property="Height" Value="68"/>
+            <Setter Property="BorderThickness" Value="0.1"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="10,5"/>
+            <Setter Property="FontFamily" Value="Cascadia Mono Light"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush Opacity="0.5">
+                        <GradientStop Color="#3841E0" Offset="1.3"/>
+                        <GradientStop Color="#26EBA9"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
         
 
         <ControlTemplate TargetType="ScrollBar" x:Key="verticalScrollBar">
@@ -159,13 +188,14 @@
             <Grid Name="item" Width="120" Height="90" Margin="10" Background="Transparent">
                 <Grid>
                     <Border Name="border" Height="86" Width="116" CornerRadius="10" BorderBrush="{StaticResource TopText}" BorderThickness="2"/>
-                    <ContentControl Content="{TemplateBinding Content}"/>
+                    <ContentControl x:Name="cbObject" Content="{TemplateBinding Content}"/>
                 </Grid>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="border" Property="Opacity" Value="0.4"/>
                     <Setter TargetName="border" Property="BorderThickness" Value="1"/>
+                    <Setter TargetName="cbObject" Property="Opacity" Value="0.5"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="Opacity" Value="1"/>
@@ -175,7 +205,7 @@
         </ControlTemplate>
 
         <ControlTemplate TargetType="Button" x:Key="menuButtons">
-            <Grid>
+            <Grid Width="45" Height="45">
                 <ContentControl x:Name="content" Content="{TemplateBinding Content}" Opacity="0.7"/>
                 <Border x:Name="border" Style="{StaticResource menuButtonsBorder}"/>
             </Grid>
@@ -195,7 +225,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         
-        <ControlTemplate TargetType="GroupBox" x:Key="buttonBlock">
+        <!--<ControlTemplate TargetType="GroupBox" x:Key="buttonBlock">
             <GroupBox BorderThickness="0.1" FontSize="10" Margin="10,5,10,10" FontFamily="Cascadia Mono Light" 
                       Header="{TemplateBinding Header}" Content="{TemplateBinding Content}">
                 <GroupBox.Foreground>
@@ -205,7 +235,7 @@
                     </LinearGradientBrush>
                 </GroupBox.Foreground>
             </GroupBox>
-        </ControlTemplate>
+        </ControlTemplate>-->
 
         <ControlTemplate TargetType="CheckBox" x:Key="overButtons">
             <Grid>

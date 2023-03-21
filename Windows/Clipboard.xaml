@@ -51,9 +51,8 @@
                             Width="167">
 
                     <GroupBox x:Name="menuButtonArea" 
-                          Template="{StaticResource buttonBlock}"
-                          Header="Назад"
-                          Height="80">
+                          Style="{StaticResource buttonsBlock}"
+                          Header="Назад">
                         <GroupBox.Content>
                             <Grid>
                                 <StackPanel Orientation="Horizontal">
@@ -74,28 +73,33 @@
                         </GroupBox.Content>
                     </GroupBox>
 
-                    <StackPanel Orientation="Horizontal" Width="167">
+                    <StackPanel Orientation="Horizontal" Margin="4">
 
                         <Button x:Name="reloadButton"
                                 Template="{StaticResource menuButtons}"
-                                HorizontalAlignment="Left"
-                                Margin="10.6,10.6,0,10.6"
+                                HorizontalAlignment="Left" Margin="4"
                                 Click="reloadButton_Click">
                             <Button.Content>
                                 <Image Source="/Windows/Resource/update.png" Width="35" Margin="5" HorizontalAlignment="Center"/>
                             </Button.Content>
-
                         </Button>
 
                         <Button x:Name="lastObjButton"
                                 Template="{StaticResource menuButtons}"
-                                HorizontalAlignment="Left"
-                                Margin="10.6,10.6,0,10.6"
+                                HorizontalAlignment="Left" Margin="4"
                                 Click="lastObjButton_Click">
                             <Button.Content>
                                 <Image Source="/Windows/Resource/copy.ico" Width="35" Margin="5" HorizontalAlignment="Center"/>
                             </Button.Content>
+                        </Button>
 
+                        <Button x:Name="clearButton"
+                                Template="{StaticResource menuButtons}"
+                                HorizontalAlignment="Left" Margin="4"
+                                Click="clearButton_Click">
+                            <Button.Content>
+                                <Image Source="/Windows/Resource/eraser.ico" Width="35" Margin="5" HorizontalAlignment="Center"/>
+                            </Button.Content>
                         </Button>
                     </StackPanel>
                 </StackPanel>

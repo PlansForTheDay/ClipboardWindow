@@ -44,9 +44,8 @@
                 <Label Foreground="AliceBlue">Типа тут параметры, которых тут много и они очень полезные</Label>
 
                 <GroupBox x:Name="menuButtonArea" 
-                          Template="{StaticResource buttonBlock}"
-                          Header="Назад"
-                          Height="80">
+                          Style="{StaticResource buttonsBlock}"
+                          Header="Назад">
                     <GroupBox.Content>
                         <Grid>
                             <StackPanel Orientation="Horizontal">

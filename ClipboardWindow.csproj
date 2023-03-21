@@ -77,8 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LoadingElements.cs" />
     <Compile Include="UserCommands.cs" />
-    <Compile Include="ComObjectConverter.cs" />
     <Compile Include="Windows\ObjectFromBuffer.xaml.cs">
       <DependentUpon>ObjectFromBuffer.xaml</DependentUpon>
     </Compile>
@@ -197,6 +197,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Resource\eraser.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

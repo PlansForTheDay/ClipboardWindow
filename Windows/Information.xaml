@@ -22,6 +22,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
                 <RowDefinition />
+                <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
 
             <Grid x:Name="controlButtonPanel" 
@@ -56,11 +57,11 @@
                     <Run FontSize="9" 
                          Text=" Данное приложение было сделано в целях обучения и изначельно не нацелено на камерческое использование."/>
                 </TextBlock>
+            </StackPanel>
                 
-                <GroupBox x:Name="menuButtonArea" 
-                          Template="{StaticResource buttonBlock}"
-                          Header="Назад"
-                          Height="80">
+                <GroupBox x:Name="menuButtonArea" Grid.Row="2"
+                          Style="{StaticResource buttonsBlock}"
+                          Header="Назад">
                     <GroupBox.Content>
                         <Grid>
                             <StackPanel Orientation="Horizontal">
@@ -80,7 +81,6 @@
                         </Grid>
                     </GroupBox.Content>
                 </GroupBox>
-            </StackPanel>
         </Grid>
     </Grid>
 </Window>

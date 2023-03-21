@@ -36,9 +36,7 @@ namespace ClipboardWindow
 
         private void lastObject_Click(object sender, RoutedEventArgs e)
         {
-            IDataObject clipboardList = Clipboard.GetDataObject();
-
-            SeizureOfData.LoadObjectWindow(clipboardList);
+            LoadingElements.ShowLastObj();
         }
     }
 }

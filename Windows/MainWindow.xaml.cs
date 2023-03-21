@@ -56,8 +56,9 @@ namespace ClipboardWindow
 
             if (msg == WM_HOTKEY)
             {
-                IDataObject clipboardList = Clipboard.GetDataObject();
-                SeizureOfData.LoadObjectWindow(clipboardList);
+                //IDataObject clipboardList = Clipboard.GetDataObject();
+                //SeizureOfData.LoadObjectWindow(clipboardList);
+                LoadingElements.ShowLastObj();
             }
 
             //WndProc(hwnd, msg, wParam, lParam, ref handled);
@@ -153,8 +154,9 @@ namespace ClipboardWindow
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            IDataObject clipboardList = Clipboard.GetDataObject();
-            SeizureOfData.LoadObjectWindow(clipboardList);
+            //IDataObject clipboardList = Clipboard.GetDataObject();
+            //SeizureOfData.LoadObjectWindow(clipboardList);
+            LoadingElements.ShowLastObj();
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

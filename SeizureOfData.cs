@@ -1,18 +1,10 @@
-﻿using ClipboardWindow.Windows;
+﻿using System.Runtime.InteropServices.WindowsRuntime;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Windows.Graphics.Imaging;
-//using Clipboard = Windows.ApplicationModel.DataTransfer.Clipboard;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage.Streams;
+using UnicodeEncoding = System.Text.UnicodeEncoding;
 
 namespace ClipboardWindow
 {
@@ -28,98 +20,51 @@ namespace ClipboardWindow
             return finalText;
         }
 
-
-        public static void LoadTextWindow(string text)
+        public async static Task<string> GetTxt(ClipboardHistoryItem item)
         {
-            ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer
-            {
-                MaxHeight = SystemParameters.FullPrimaryScreenHeight,
-                MaxWidth = SystemParameters.FullPrimaryScreenWidth
-            };
-
-            var cbItem = new TextBox()
-            {
-                Style = (Style)Application.Current.Resources["windowTextFromCb"],
-                Text = text,
-            };
-
-            objectFromBuffer.ContentAera.Children.Add(cbItem);
-            objectFromBuffer.Icon = (ImageSource)Application.Current.Resources["Text"];
-            objectFromBuffer.SizeToContent = SizeToContent.WidthAndHeight;
-
-            objectFromBuffer.Show();
-
-            objectFromBuffer.MaxHeight = objectFromBuffer.Height + 20;
-            objectFromBuffer.MaxWidth = objectFromBuffer.Width + 20;
+            return SeizureOfData.DecodeText(await item.Content.GetTextAsync());
         }
 
-        public static void LoadImageWindow(BitmapSource bitmap)
+        [STAThread]
+        public static async Task<BitmapImage> GetImageFromHistoryItem(ClipboardHistoryItem item)
         {
-            ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer
+            DataPackageView dataPackage = item.Content;
+
+            IRandomAccessStreamReference imageReceived;
+            try
             {
-                MaxHeight = SystemParameters.FullPrimaryScreenHeight,
-                MaxWidth = SystemParameters.FullPrimaryScreenWidth
-            };
-
-            var cbItem = new Image()
-            {
-                Style = (Style)Application.Current.Resources["windowImageFromCb"],
-                Source = (BitmapSource)bitmap,
-                //Width = bitmap.Width,
-                //Height = bitmap.Height,
-            };
-
-            objectFromBuffer.ContentAera.Children.Add(cbItem);
-            objectFromBuffer.Icon = (ImageSource)Application.Current.Resources["Image"];
-
-            objectFromBuffer.Height = bitmap.Height + 55;
-            objectFromBuffer.Width = bitmap.Width + 20;
-
-            objectFromBuffer.MaxHeight = SystemParameters.FullPrimaryScreenHeight;
-            objectFromBuffer.MaxWidth = SystemParameters.FullPrimaryScreenWidth;
-
-            objectFromBuffer.Show();
-        }
-
-        public static void LoadObjectWindow(IDataObject dataObject)
-        {
-            //ObjectFromBuffer objectFromBuffer = new ObjectFromBuffer();
-
-            //objectFromBuffer.MaxHeight = SystemParameters.FullPrimaryScreenHeight;
-            //objectFromBuffer.MaxWidth = SystemParameters.FullPrimaryScreenWidth;
-
-            if (dataObject.GetDataPresent(DataFormats.Text))
-            {
-                LoadTextWindow(DecodeText(dataObject.GetData(DataFormats.Text).ToString().Trim()));
-
-                //var cbItem = new TextBox()
-                //{
-                //    Style = (Style)Application.Current.Resources["windowTextFromCb"],
-                //    Text = DecodeText(dataObject.GetData(DataFormats.Text).ToString().Trim()),
-                //};
-
-                //objectFromBuffer.ContentAera.Children.Add(cbItem);
-                //objectFromBuffer.Icon = (ImageSource)Application.Current.Resources["Text"];
+                imageReceived = await dataPackage.GetBitmapAsync();
             }
-            else if (dataObject.GetDataPresent(DataFormats.Bitmap))
+            catch
+            { return null; }
+
+            if (imageReceived == null)
+            { return null; }
+
+            using (var imageStream = await imageReceived.OpenReadAsync())
             {
-                LoadImageWindow((BitmapSource)dataObject.GetData(DataFormats.Bitmap));
+                byte[] buffer = new byte[imageStream.Size];
+                await imageStream.ReadAsync(buffer.AsBuffer(), (uint)imageStream.Size, InputStreamOptions.None);
 
-                //var cbItem = new Image()
-                //{
-                //    Style = (Style)Application.Current.Resources["windowImageFromCb"],
-                //    Source = (BitmapSource)dataObject.GetData(DataFormats.Bitmap),
-                //    Width = ((InteropBitmap)dataObject.GetData(DataFormats.Bitmap)).Width,
-                //    Height = ((InteropBitmap)dataObject.GetData(DataFormats.Bitmap)).Height,
-                //};
-
-                //objectFromBuffer.ContentAera.Children.Add(cbItem);
-                //objectFromBuffer.Icon = (ImageSource)Application.Current.Resources["Image"];
+                using (var ms = new System.IO.MemoryStream(buffer))
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = ms;
+                    image.EndInit();
+                    return image;
+                }
             }
-            //objectFromBuffer.Show();
-
-            //objectFromBuffer.MaxHeight = objectFromBuffer.Height + 20;
-            //objectFromBuffer.MaxWidth = objectFromBuffer.Width + 20;
         }
+
+        //public static void LoadObjectWindow(IDataObject dataObject)
+        //{
+        //    if (dataObject.GetDataPresent(DataFormats.Text))
+        //        LoadingElements.LoadTextWindow(DecodeText(dataObject.GetData(DataFormats.Text).ToString().Trim()));
+
+        //    else if (dataObject.GetDataPresent(DataFormats.Bitmap))
+        //        LoadingElements.LoadImageWindow((BitmapSource)dataObject.GetData(DataFormats.Bitmap));
+        //}
     }
 }

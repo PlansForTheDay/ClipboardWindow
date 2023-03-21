@@ -59,9 +59,8 @@
                         Grid.Row="1" 
                         Orientation="Vertical">
                 <GroupBox x:Name="bufferButtonArea" 
-                          Template="{StaticResource buttonBlock}"
-                          Header="Буфер обмена"
-                          Height="80">
+                          Style="{StaticResource buttonsBlock}"
+                          Header="Буфер обмена">
                     <GroupBox.Content>
                         <Grid>
                             <StackPanel Orientation="Horizontal">
@@ -83,9 +82,8 @@
                 </GroupBox>
 
                 <GroupBox x:Name="settingsButtonArea" 
-                          Template="{StaticResource buttonBlock}"
-                          Header="Параметры"
-                          Height="80">
+                          Style="{StaticResource buttonsBlock}"
+                          Header="Параметры">
                     <GroupBox.Content>
                         <Grid>
                             <StackPanel Orientation="Horizontal">
@@ -108,9 +106,8 @@
                 </GroupBox>
 
                 <GroupBox x:Name="informationButtonArea" 
-                          Template="{StaticResource buttonBlock}"
-                          Header="Информация"
-                          Height="80">
+                          Style="{StaticResource buttonsBlock}"
+                          Header="Информация">
                     <GroupBox.Content>
                         <Grid>
                             <StackPanel Orientation="Horizontal">
