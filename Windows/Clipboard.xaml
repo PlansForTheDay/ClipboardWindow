@@ -114,6 +114,7 @@
                            Grid.Column="2" 
                            MaxWidth="560"
                            MinWidth="167">
+
                 </WrapPanel>
                 
             </Grid>

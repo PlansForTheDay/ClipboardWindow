@@ -13,10 +13,6 @@ namespace ClipboardWindow
     {
         public static async void ShowLastObj()
         {
-            //IDataObject clipboardList = Clipboard.GetDataObject();
-
-            //SeizureOfData.LoadObjectWindow(clipboardList);
-
             var lastObject = Clipboard.GetHistoryItemsAsync().GetResults().Items.First();
 
             if (lastObject.Content == null)
@@ -106,7 +102,7 @@ namespace ClipboardWindow
 
             foreach (var item in items.GetResults().Items)
             {
-                var button = new Button
+                var itemButton = new Button
                 {
                     Template = (ControlTemplate)Application.Current.Resources["clipboardItem"]
                 };
@@ -115,27 +111,27 @@ namespace ClipboardWindow
                 {
                     string text = await SeizureOfData.GetTxt(item);
 
-                    button.Name = "clipboardText";
-                    button.Content = new TextBlock
+                    itemButton.Name = "clipboardText";
+                    itemButton.Content = new TextBlock
                     {
                         Style = (Style)Application.Current.Resources["cbTextObject"],
                         Text = text
                     };
 
-                    WindowClipboard.ClickThis(button);
+                    WindowClipboard.ClickThis(itemButton);
                 }
                 else if (item.Content.Contains(DataFormats.Bitmap))
                 {
                     var image = await SeizureOfData.GetImageFromHistoryItem(item);
 
-                    button.Name = "clipboardImage";
-                    button.Content = new Image { Source = image, MaxWidth = 97, MaxHeight = 80 };
-                    WindowClipboard.ClickThis(button);
+                    itemButton.Name = "clipboardImage";
+                    itemButton.Content = new Image { Source = image };
+                    WindowClipboard.ClickThis(itemButton);
                 }
                 else
                 {
-                    button.Name = "clipboardRaw";
-                    button.Content = new TextBox
+                    itemButton.Name = "clipboardRaw";
+                    itemButton.Content = new TextBox
                     {
                         Name = "rawObject",
                         Text = "Необрабатываемый объект",
@@ -147,7 +143,7 @@ namespace ClipboardWindow
                         Foreground = (Brush)Application.Current.Resources["TopText"]
                     };
                 }
-                itemsArea.Children.Add(button);
+                itemsArea.Children.Add(itemButton);
             }
         }
 

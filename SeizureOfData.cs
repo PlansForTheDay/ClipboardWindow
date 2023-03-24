@@ -22,7 +22,7 @@ namespace ClipboardWindow
 
         public async static Task<string> GetTxt(ClipboardHistoryItem item)
         {
-            return SeizureOfData.DecodeText(await item.Content.GetTextAsync());
+            return DecodeText(await item.Content.GetTextAsync());
         }
 
         [STAThread]
@@ -57,14 +57,5 @@ namespace ClipboardWindow
                 }
             }
         }
-
-        //public static void LoadObjectWindow(IDataObject dataObject)
-        //{
-        //    if (dataObject.GetDataPresent(DataFormats.Text))
-        //        LoadingElements.LoadTextWindow(DecodeText(dataObject.GetData(DataFormats.Text).ToString().Trim()));
-
-        //    else if (dataObject.GetDataPresent(DataFormats.Bitmap))
-        //        LoadingElements.LoadImageWindow((BitmapSource)dataObject.GetData(DataFormats.Bitmap));
-        //}
     }
 }

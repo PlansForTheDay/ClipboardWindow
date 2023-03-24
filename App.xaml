@@ -113,7 +113,7 @@
 
         <Style TargetType="TextBlock" x:Key="cbTextObject">
             <Setter Property="Margin" Value="10,7"/>
-            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontSize" Value="10"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Width" Value="110"/>
@@ -185,17 +185,18 @@
 
         <ControlTemplate TargetType="Button" x:Key="clipboardItem"
                          x:Name="clipboardItem">
-            <Grid Name="item" Width="120" Height="90" Margin="10" Background="Transparent">
-                <Grid>
-                    <Border Name="border" Height="86" Width="116" CornerRadius="10" BorderBrush="{StaticResource TopText}" BorderThickness="2"/>
-                    <ContentControl x:Name="cbObject" Content="{TemplateBinding Content}"/>
-                </Grid>
+            <Grid Name="item" Width="147" Height="119" Margin="10" Background="Transparent" ClipToBounds="True">
+                <ContentControl x:Name="cbObject" Margin="4" Opacity="0.6" Content="{TemplateBinding Content}"/>
+                <Border Name="border" CornerRadius="10" BorderBrush="{StaticResource TopText}" BorderThickness="2"/>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="border" Property="Opacity" Value="0.4"/>
+                    <Setter TargetName="item" Property="Margin" Value="2"/>
+                    <Setter TargetName="item" Property="Width" Value="163"/>
+                    <Setter TargetName="item" Property="Height" Value="135"/>
+                    <Setter TargetName="border" Property="Opacity" Value="0.6"/>
                     <Setter TargetName="border" Property="BorderThickness" Value="1"/>
-                    <Setter TargetName="cbObject" Property="Opacity" Value="0.5"/>
+                    <Setter TargetName="cbObject" Property="Opacity" Value="1"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="Opacity" Value="1"/>
@@ -225,18 +226,6 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         
-        <!--<ControlTemplate TargetType="GroupBox" x:Key="buttonBlock">
-            <GroupBox BorderThickness="0.1" FontSize="10" Margin="10,5,10,10" FontFamily="Cascadia Mono Light" 
-                      Header="{TemplateBinding Header}" Content="{TemplateBinding Content}">
-                <GroupBox.Foreground>
-                    <LinearGradientBrush Opacity="0.5">
-                        <GradientStop Color="#3841E0" Offset="1.3"/>
-                        <GradientStop Color="#26EBA9"/>
-                    </LinearGradientBrush>
-                </GroupBox.Foreground>
-            </GroupBox>
-        </ControlTemplate>-->
-
         <ControlTemplate TargetType="CheckBox" x:Key="overButtons">
             <Grid>
                 <Border
