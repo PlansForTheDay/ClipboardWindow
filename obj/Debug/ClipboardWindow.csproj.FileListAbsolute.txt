@@ -25,7 +25,39 @@ C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Wi
 C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Windows\ObjectFromBuffer.baml
 C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Windows\Settings.g.cs
 C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Windows\Settings.baml
-C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Windows\Resource\Topics\tm_Turquoise-dark.baml
 C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\bin\Debug\Microsoft.VisualStudio.Interop.dll
 C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\bin\Debug\stdole.dll
 C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\bin\Debug\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\ClipboardWindow.exe.config
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\ClipboardWindow.exe
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\ClipboardWindow.pdb
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\Hardcodet.NotifyIcon.Wpf.dll
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\Microsoft.VisualStudio.Interop.dll
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\stdole.dll
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\bin\Debug\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.csproj.AssemblyReference.cache
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.csproj.SuggestedBindingRedirects.cache
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Clipboard.g.cs
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Information.g.cs
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\MainWindow.g.cs
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\ObjectFromBuffer.g.cs
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Settings.g.cs
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\App.g.cs
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow_MarkupCompile.cache
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow_MarkupCompile.lref
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\App.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Clipboard.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Information.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\MainWindow.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\ObjectFromBuffer.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Resource\Topics\tm_Turquoise-dark.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\Windows\Settings.baml
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.g.resources
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.Properties.Resources.resources
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.csproj.GenerateResource.cache
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.csproj.CoreCompileInputs.cache
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.csproj.CopyComplete
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.exe
+D:\.Много буков\C#\Окно буфера\ClipboardWindow\obj\Debug\ClipboardWindow.pdb
+C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Windows\Resource\Topics\Calus_Selected.baml
+C:\Users\Чивкунов Данила\source\repos\ClipboardWindow\obj\Debug\Windows\Resource\Topics\Classic.baml

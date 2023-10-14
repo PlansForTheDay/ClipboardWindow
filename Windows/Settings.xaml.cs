@@ -45,5 +45,132 @@ namespace ClipboardWindow.Windows
 
             Close();
         }
+
+        private void Сhapter_Checked(object sender, RoutedEventArgs e)
+        {
+            ParametersArea.Children.Clear();
+
+            if (VisualСhapter.IsChecked == true) 
+            {
+                var themeBox = new GroupBox()
+                {
+                    Header = "Тема",
+                    Style = (Style)Application.Current.Resources["Parameter"],
+                    Content = new StackPanel() 
+                    {
+                        Orientation = Orientation.Vertical,
+                        Children = 
+                        {
+                            new TextBlock()
+                            {
+                                Style = (Style)Application.Current.Resources["menuTextBox"],
+                                Width = 368, 
+                                VerticalAlignment = VerticalAlignment.Top,
+                                HorizontalAlignment = HorizontalAlignment.Left,
+                                Text = "Выберете палитру цветов приложения."
+                            },
+                            new WrapPanel()
+                            {
+                                Orientation = Orientation.Horizontal,
+                                Margin = new Thickness(5, 5, 5, 5),
+                                Width = 368,
+                                HorizontalAlignment= HorizontalAlignment.Left,
+                                Children=
+                                {
+                                    new Label()
+                                    {
+                                        Foreground = Brushes.PaleVioletRed,
+                                        FontFamily = new FontFamily("Courier New"),
+                                        Content = " ~~~ Пока не работает ~~~"
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                };
+                ParametersArea.Children.Add(themeBox);
+            }
+            if (ProgramСhapter.IsChecked == true)
+            {
+                var autorunBox = new GroupBox()
+                {
+                    Header = "Автозапуск",
+                    Style = (Style)Application.Current.Resources["Parameter"],
+                    Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Vertical,
+                        Children =
+                        {
+                            new TextBlock()
+                            {
+                                Style = (Style)Application.Current.Resources["menuTextBox"],
+                                Width = 368,
+                                VerticalAlignment = VerticalAlignment.Top,
+                                HorizontalAlignment = HorizontalAlignment.Left,
+                                Text = "Запускать приложение вместе со стартом системы."
+                            },
+                            new WrapPanel()
+                            {
+                                Orientation = Orientation.Horizontal,
+                                Margin = new Thickness(5, 5, 5, 5),
+                                Width = 368,
+                                HorizontalAlignment= HorizontalAlignment.Left,
+                                Children=
+                                {
+                                    new Label()
+                                    {
+                                        Foreground = Brushes.PaleVioletRed,
+                                        FontFamily = new FontFamily("Courier New"),
+                                        Content = " ~~~ Пока не работает ~~~"
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                };
+
+                var bindBox = new GroupBox()
+                {
+                    Header = "Горячие клавиши",
+                    Style = (Style)Application.Current.Resources["Parameter"],
+                    Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Vertical,
+                        Children =
+                        {
+                            new TextBlock()
+                            {
+                                Style = (Style)Application.Current.Resources["menuTextBox"],
+                                Width = 368,
+                                VerticalAlignment = VerticalAlignment.Top,
+                                HorizontalAlignment = HorizontalAlignment.Left,
+                                Text = "Использование горячих клавишь, для быстрого использования некоторых вункций."
+                            },
+                            new WrapPanel()
+                            {
+                                Orientation = Orientation.Horizontal,
+                                Margin = new Thickness(5, 5, 5, 5),
+                                Width = 368,
+                                HorizontalAlignment= HorizontalAlignment.Left,
+                                Children=
+                                {
+                                    new Label()
+                                    {
+                                        Foreground = Brushes.PaleVioletRed,
+                                        FontFamily = new FontFamily("Courier New"),
+                                        Content = " ~~~ Пока не работает ~~~"
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                };
+                ParametersArea.Children.Add(autorunBox);
+                ParametersArea.Children.Add(bindBox);
+            }
+        }
     }
 }

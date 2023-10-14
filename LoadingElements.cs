@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using BitmapSource = System.Windows.Media.Imaging.BitmapSource;
 using System.Windows.Media;
 using Clipboard = Windows.ApplicationModel.DataTransfer.Clipboard;
+using ClipboardWindow.Models;
 
 namespace ClipboardWindow
 {
@@ -66,7 +67,9 @@ namespace ClipboardWindow
             {
                 Style = (Style)Application.Current.Resources["windowImageFromCb"],
                 Source = bitmap,
+                RenderTransform = new ScaleTransform(),
             };
+            ObjectFromBuffer.ChangeZoom(image);
 
             window.ContentAera.Children.Add(image);
             window.Icon = (ImageSource)Application.Current.Resources["Image"];
@@ -109,6 +112,8 @@ namespace ClipboardWindow
 
                 if (item.Content.Contains(DataFormats.Text))
                 {
+                    //ClipboardObject clipboardObject = new ClipboardObject(item);
+
                     string text = await SeizureOfData.GetTxt(item);
 
                     itemButton.Name = "clipboardText";
@@ -122,6 +127,8 @@ namespace ClipboardWindow
                 }
                 else if (item.Content.Contains(DataFormats.Bitmap))
                 {
+                    //ClipboardObject clipboardObject = new ClipboardObject(item);
+
                     var image = await SeizureOfData.GetImageFromHistoryItem(item);
 
                     itemButton.Name = "clipboardImage";
@@ -143,9 +150,15 @@ namespace ClipboardWindow
                         Foreground = (Brush)Application.Current.Resources["TopText"]
                     };
                 }
+
+                //itemButton.ToolTip = new ToolTip()
+                //{
+                //    Content = itemButton.Content,
+                //    Style = (Style)Application.Current.Resources["ToolTip"],
+                //};
+
                 itemsArea.Children.Add(itemButton);
             }
         }
-
     }
 }

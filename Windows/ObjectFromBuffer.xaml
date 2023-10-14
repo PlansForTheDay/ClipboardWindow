@@ -12,7 +12,7 @@
         MinWidth="275" MinHeight="65" 
         ResizeMode="CanResizeWithGrip"
         StateChanged="Window_StateChanged"
-        >
+        SizeChanged="Window_SizeChanged">
     <Grid>
         <Border Style="{StaticResource windowBorder}"/>
         <Grid>
@@ -35,7 +35,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="ContentAera" Grid.Row="1" MinWidth="240" Margin="5">
+            <Grid x:Name="ContentAera" Grid.Row="1" MinWidth="240" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
                 
             </Grid>
         </Grid>

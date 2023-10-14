@@ -14,16 +14,20 @@
         <ImageSource x:Key="Text">Windows\Resource\text.ico</ImageSource>
         <ImageSource x:Key="Image">Windows\Resource\image.ico</ImageSource>
 
+        <!--Оснновные-->
+        <!--#region -->
         <LinearGradientBrush x:Key="WindowBackground" 
                              StartPoint="0,0" 
                              EndPoint="1,1">
             <GradientStop Color="#001517" Offset="0.9"/>
             <GradientStop Color="#000114" Offset="0"/>
         </LinearGradientBrush>
+
         <LinearGradientBrush x:Key="WindowBorder">
             <GradientStop Color="#27F5EB" Offset="0.2"/>
             <GradientStop Color="#26EBA9"/>
         </LinearGradientBrush>
+
         <LinearGradientBrush x:Key="MaitTextFill" 
                              Opacity="0.6" 
                              StartPoint="1,0" 
@@ -31,17 +35,50 @@
             <GradientStop Color="#8550D9" Offset="0.9"/>
             <GradientStop Color="#30B7CD"/>
         </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="TopText" 
+                             Opacity="1" 
+                             StartPoint="0,0" 
+                             EndPoint="1,1">
+            <GradientStop Color="#3841E0" Offset="1.2"/>
+            <GradientStop Color="#30B7CD"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="TextFromCb">
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="TrayItemBackground"
+                             Opacity="0.3"
+                             StartPoint="0,0"
+                             EndPoint="1,1">
+            <GradientStop Color="#FF3382" Offset="1"/>
+            <GradientStop Color="#40BBFF"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="MenuGroupText" 
+                         Opacity="0.5">
+            <GradientStop Color="#3841E0" Offset="1.3"/>
+            <GradientStop Color="#26EBA9"/>
+        </LinearGradientBrush>
+        <!--#endregion-->
+
+        <!--Не основные-->
+        <!--#region -->
         <LinearGradientBrush x:Key="MenuButtonBorder" 
                              Opacity="0.5">
             <GradientStop Color="#8550D9" Offset="0.9"/>
             <GradientStop Color="#30B7CD"/>
         </LinearGradientBrush>
-        <LinearGradientBrush x:Key="MenuButtonBorder_IsMouseOver" 
+
+        <LinearGradientBrush x:Key="MenuButtonBackground_IsMouseOver"
                              StartPoint="0,0" 
                              EndPoint="1,1" 
                              Opacity="0.8">
             <GradientStop Color="#8550D9" Offset="0.9"/>
             <GradientStop Color="#30B7CD"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="MenuButtonBorder_IsMouseOver">
+            <GradientStop Color="#042D42"/>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="MenuButtonBorder_IsPressed" 
                              Opacity="0.5">
@@ -55,23 +92,11 @@
             <GradientStop Color="#8550D9" Offset="0.9"/>
             <GradientStop Color="#30B7CD"/>
         </LinearGradientBrush>
-        <LinearGradientBrush x:Key="TrayItemBackground"
-                             Opacity="0.3"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#FF3382" Offset="1"/>
-            <GradientStop Color="#40BBFF"/>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="TopText" 
-                             Opacity="1" 
-                             StartPoint="0,0" 
-                             EndPoint="1,1">
-            <GradientStop Color="#3841E0" Offset="1.2"/>
-            <GradientStop Color="#30B7CD"/>
-        </LinearGradientBrush>
+        <!--#endregion-->
+
 
         <ContextMenu x:Key="treyContextMenu"
-                     Foreground="{StaticResource MenuButtonBorder_IsMouseOver}"
+                     Foreground="{StaticResource MenuButtonBackground_IsMouseOver}"
                      BorderBrush="{StaticResource WindowBackground}"
                      BorderThickness="0.5">
 
@@ -80,6 +105,14 @@
             <Separator Background="{StaticResource MaitTextFill}" Opacity="0.5" Margin="-2,2"/>
             <MenuItem Name="exitButton" Header="Закрыть" Click="ExitButton_Click" Style="{DynamicResource MenuItem}"/>
         </ContextMenu>
+        
+
+        <Style TargetType="ToolTip" x:Key="ToolTip">
+            <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource WindowBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{StaticResource TopText}"/>
+        </Style>
 
         <Style TargetType="MenuItem" x:Key="MenuItem">
             <Setter Property="Background" Value="{StaticResource TrayItemBackground}"/>
@@ -114,21 +147,23 @@
         <Style TargetType="TextBlock" x:Key="cbTextObject">
             <Setter Property="Margin" Value="10,7"/>
             <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource TextFromCb}"/>
             <Setter Property="Width" Value="110"/>
         </Style>
 
         <Style TargetType="Image" x:Key="windowImageFromCb">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="Linear"/>
         </Style>
 
         <Style TargetType="TextBox" x:Key="windowTextFromCb">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AutoWordSelection" Value="False"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource TextFromCb}"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -153,20 +188,46 @@
 
         <Style TargetType="GroupBox" x:Key="buttonsBlock">
             <Setter Property="Height" Value="68"/>
-            <Setter Property="BorderThickness" Value="0.1"/>
+            <Setter Property="BorderThickness" Value="0.2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource WindowBorder}"/>
             <Setter Property="FontSize" Value="10"/>
             <Setter Property="Margin" Value="10,5"/>
             <Setter Property="FontFamily" Value="Cascadia Mono Light"/>
-            <Setter Property="Foreground">
-                <Setter.Value>
-                    <LinearGradientBrush Opacity="0.5">
-                        <GradientStop Color="#3841E0" Offset="1.3"/>
-                        <GradientStop Color="#26EBA9"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Foreground" Value="{StaticResource MenuGroupText}"/>
         </Style>
-        
+
+        <Style TargetType="GroupBox" x:Key="Parameter">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource TopText}"/>
+            <Setter Property="FontFamily" Value="Cascadia Code SemiBold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+
+        <ControlTemplate TargetType="RadioButton" x:Key="Сhapter">
+            <Grid Background="Transparent">
+                <ContentControl x:Name="content" Content="{TemplateBinding Content}" Opacity="1"
+                                FontFamily="Cascadia Code"
+                                VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Foreground="{StaticResource MenuButtonBorder}"/>
+                
+                <Border x:Name="border" BorderBrush="{StaticResource MenuButtonBorder}" Margin="6,3" BorderThickness="1.5" Height="30" Width="84" CornerRadius="3"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="BorderThickness" Value="0.5"/>
+                    
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter TargetName="border" Property="BorderThickness" Value="2.5"/>
+                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource TopText}"/>
+                    <Setter TargetName="border" Property="Margin" Value="6,0"/>
+                    <Setter TargetName="border" Property="Height" Value="36"/>
+                    <Setter TargetName="content" Property="Foreground" Value="{StaticResource TopText}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
 
         <ControlTemplate TargetType="ScrollBar" x:Key="verticalScrollBar">
             <Grid Margin="3" HorizontalAlignment="Right">
@@ -183,8 +244,7 @@
             </Grid>
         </ControlTemplate>
 
-        <ControlTemplate TargetType="Button" x:Key="clipboardItem"
-                         x:Name="clipboardItem">
+        <ControlTemplate TargetType="Button" x:Key="clipboardItem" x:Name="clipboardItem">
             <Grid Name="item" Width="147" Height="119" Margin="10" Background="Transparent" ClipToBounds="True">
                 <ContentControl x:Name="cbObject" Margin="4" Opacity="0.6" Content="{TemplateBinding Content}"/>
                 <Border Name="border" CornerRadius="10" BorderBrush="{StaticResource TopText}" BorderThickness="2"/>
@@ -213,12 +273,12 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="border" Property="BorderThickness" Value="1.5"/>
-                    <Setter TargetName="border" Property="BorderBrush" Value="#042D42"/>
-                    <Setter TargetName="border" Property="Background" Value="{StaticResource MenuButtonBorder_IsMouseOver}"/>
+                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource MenuButtonBorder_IsMouseOver}"/>
+                    <Setter TargetName="border" Property="Background" Value="{StaticResource MenuButtonBackground_IsMouseOver}"/>
                     <Setter TargetName="content" Property="Opacity" Value="1"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter TargetName="border" Property="BorderThickness" Value="3"/>
+                    <Setter TargetName="border" Property="BorderThickness" Value="2.5"/>
                     <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource MenuButtonBorder_IsPressed}"/>
                     <Setter TargetName="border" Property="Background" Value="{StaticResource MenuBackground_IsPressed}"/>
                     <Setter TargetName="content" Property="Opacity" Value="0.7"/>

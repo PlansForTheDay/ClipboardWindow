@@ -2,16 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ClipboardWindow">
 
-    <!--<LinearGradientBrush x:Key="WindowBackground" 
+    <Label x:Key="Title">Классика</Label>
+    <!--Оснновные-->
+    <!--#region -->
+    <LinearGradientBrush x:Key="WindowBackground" 
                              StartPoint="0,0" 
                              EndPoint="1,1">
         <GradientStop Color="#001517" Offset="0.9"/>
         <GradientStop Color="#000114" Offset="0"/>
     </LinearGradientBrush>
+
     <LinearGradientBrush x:Key="WindowBorder">
         <GradientStop Color="#27F5EB" Offset="0.2"/>
         <GradientStop Color="#26EBA9"/>
     </LinearGradientBrush>
+
     <LinearGradientBrush x:Key="MaitTextFill" 
                              Opacity="0.6" 
                              StartPoint="1,0" 
@@ -19,17 +24,50 @@
         <GradientStop Color="#8550D9" Offset="0.9"/>
         <GradientStop Color="#30B7CD"/>
     </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TopText" 
+                             Opacity="1" 
+                             StartPoint="0,0" 
+                             EndPoint="1,1">
+        <GradientStop Color="#3841E0" Offset="1.2"/>
+        <GradientStop Color="#30B7CD"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TextFromCb">
+        <GradientStop Color="White"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TrayItemBackground"
+                             Opacity="0.3"
+                             StartPoint="0,0"
+                             EndPoint="1,1">
+        <GradientStop Color="#FF3382" Offset="1"/>
+        <GradientStop Color="#40BBFF"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MenuGroupText" 
+                         Opacity="0.5">
+        <GradientStop Color="#3841E0" Offset="1.3"/>
+        <GradientStop Color="#26EBA9"/>
+    </LinearGradientBrush>
+    <!--#endregion-->
+    
+    <!--Не основные-->
+    <!--#region -->
     <LinearGradientBrush x:Key="MenuButtonBorder" 
                              Opacity="0.5">
         <GradientStop Color="#8550D9" Offset="0.9"/>
         <GradientStop Color="#30B7CD"/>
     </LinearGradientBrush>
-    <LinearGradientBrush x:Key="MenuButtonBorder_IsMouseOver" 
+
+    <LinearGradientBrush x:Key="MenuButtonBackground_IsMouseOver"
                              StartPoint="0,0" 
                              EndPoint="1,1" 
                              Opacity="0.8">
         <GradientStop Color="#8550D9" Offset="0.9"/>
         <GradientStop Color="#30B7CD"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="MenuButtonBorder_IsMouseOver">
+        <GradientStop Color="#042D42"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="MenuButtonBorder_IsPressed" 
                              Opacity="0.5">
@@ -43,24 +81,5 @@
         <GradientStop Color="#8550D9" Offset="0.9"/>
         <GradientStop Color="#30B7CD"/>
     </LinearGradientBrush>
-    <LinearGradientBrush x:Key="TrayItemBackground"
-                             Opacity="0.3"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-        <GradientStop Color="#FF3382" Offset="1"/>
-        <GradientStop Color="#40BBFF"/>
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="TopText" 
-                             Opacity="1" 
-                             StartPoint="0,0" 
-                             EndPoint="1,1">
-        <GradientStop Color="#3841E0" Offset="1.2"/>
-        <GradientStop Color="#30B7CD"/>
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="buttonBlockForeground" 
-                         Opacity="0.5">
-        <GradientStop Color="#3841E0" Offset="1.3"/>
-        <GradientStop Color="#26EBA9"/>
-    </LinearGradientBrush>-->
-
+    <!--#endregion-->
 </ResourceDictionary>

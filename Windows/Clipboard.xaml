@@ -79,6 +79,9 @@
                                 Template="{StaticResource menuButtons}"
                                 HorizontalAlignment="Left" Margin="4"
                                 Click="reloadButton_Click">
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTip}" Content="Обновить"/>
+                            </Button.ToolTip>
                             <Button.Content>
                                 <Image Source="/Windows/Resource/update.png" Width="35" Margin="5" HorizontalAlignment="Center"/>
                             </Button.Content>
@@ -88,6 +91,9 @@
                                 Template="{StaticResource menuButtons}"
                                 HorizontalAlignment="Left" Margin="4"
                                 Click="lastObjButton_Click">
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTip}" Content="Последний объект"/>
+                            </Button.ToolTip>
                             <Button.Content>
                                 <Image Source="/Windows/Resource/copy.ico" Width="35" Margin="5" HorizontalAlignment="Center"/>
                             </Button.Content>
@@ -97,6 +103,9 @@
                                 Template="{StaticResource menuButtons}"
                                 HorizontalAlignment="Left" Margin="4"
                                 Click="clearButton_Click">
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTip}" Content="Очистить буфер обмена"/>
+                            </Button.ToolTip>
                             <Button.Content>
                                 <Image Source="/Windows/Resource/eraser.ico" Width="35" Margin="5" HorizontalAlignment="Center"/>
                             </Button.Content>
@@ -104,7 +113,7 @@
                     </StackPanel>
                 </StackPanel>
                 
-                <Rectangle Grid.Column="1" VerticalAlignment="Stretch" Width="0.5" Margin="0" Stroke="{StaticResource  WindowBorder}" />
+                <Rectangle Grid.Column="1" VerticalAlignment="Stretch" Width="0.5" Margin="0" Stroke="{StaticResource WindowBorder}" />
 
 
                 <WrapPanel x:Name="ClipboardItemsArea"
@@ -112,7 +121,7 @@
                            HorizontalAlignment="Left"
                            VerticalAlignment="Top" 
                            Grid.Column="2" 
-                           MaxWidth="560"
+                           MaxWidth="835"
                            MinWidth="167">
 
                 </WrapPanel>

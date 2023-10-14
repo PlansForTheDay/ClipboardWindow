@@ -57,22 +57,39 @@ namespace ClipboardWindow.Windows
             switch (Topmost)
             {
                 case true: 
-                    //overButton.BorderBrush = new SolidColorBrush(Colors.Black);
-
                     Topmost = false; 
                     break;
+
                 case false: 
-                    //LinearGradientBrush myLinearGradientBrush = new LinearGradientBrush();
-                    //myLinearGradientBrush.StartPoint = new Point(0, 0);
-                    //myLinearGradientBrush.EndPoint = new Point(1, 1);
-                    //myLinearGradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(1, 227, 176, 11), 0.9));
-                    //myLinearGradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(1, 250, 217, 0), 0));
-
-                    //overButton.BorderBrush = myLinearGradientBrush;
                     Topmost = true;
-
                     break;
             }
+        }
+
+        private static void image_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Image image = sender as Image;
+
+            var st = (ScaleTransform)image.RenderTransform;
+            double zoom = e.Delta > 0 ? .2 : -.2;
+
+            if ((st.ScaleX < 0.5 || st.ScaleY < 0.5) && zoom < 0)
+                return;
+
+            st.ScaleX += zoom;
+            st.ScaleY += zoom;
+            st.CenterX = image.RenderSize.Width / 2;
+            st.CenterY = image.RenderSize.Height / 2;
+        }
+
+        public static void ChangeZoom(Image image)
+        {
+            image.MouseWheel += new MouseWheelEventHandler(image_MouseWheel);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
         }
     }
 }

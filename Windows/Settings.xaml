@@ -22,6 +22,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
                 <RowDefinition />
+                <RowDefinition Height="88"/>
             </Grid.RowDefinitions>
 
             <Grid x:Name="controlButtonPanel" 
@@ -37,35 +38,57 @@
                 </StackPanel>
             </Grid>
 
-            <StackPanel x:Name="windowContent" 
-                        Grid.Row="1" 
-                        Orientation="Vertical">
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <StackPanel x:Name="Сhapters"
+                            Orientation="Vertical"
+                            Width="96" HorizontalAlignment="Left">
 
-                <Label Foreground="AliceBlue">Типа тут параметры, которых тут много и они очень полезные</Label>
+                    <RadioButton x:Name="VisualСhapter" 
+                                 GroupName="groupСhapter"
+                                 HorizontalAlignment="Left" 
+                                 Template="{StaticResource Сhapter}" 
+                                 Checked="Сhapter_Checked"
+                                 Content="Внешний вид" IsChecked="False">
+                    </RadioButton>
 
-                <GroupBox x:Name="menuButtonArea" 
-                          Style="{StaticResource buttonsBlock}"
-                          Header="Назад">
-                    <GroupBox.Content>
-                        <Grid>
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="mainMenuButton" 
-                                        HorizontalAlignment="Left" 
-                                        Template="{StaticResource menuButtons}"
-                                        Click="mainMenuButton_Click">
-                                    <Button.Content>
-                                        <Image Source="Resource\Icon.ico" Margin="5" HorizontalAlignment="Center"/>
-                                    </Button.Content>
-                                </Button>
+                    <RadioButton x:Name="ProgramСhapter" 
+                                 GroupName="groupСhapter"
+                                 HorizontalAlignment="Left" 
+                                 Template="{StaticResource Сhapter}" 
+                                 Checked="Сhapter_Checked"
+                                 Content="Приложение">
+                    </RadioButton>
+                
+                </StackPanel>
 
-                                <TextBlock Style="{StaticResource menuTextBox}">
-                                    Вернуться в основное меню.
-                                </TextBlock>
-                            </StackPanel>
-                        </Grid>
-                    </GroupBox.Content>
-                </GroupBox>
+                <!--<Rectangle VerticalAlignment="Stretch" Width="0.5" Margin="0" Stroke="{StaticResource WindowBorder}"/>-->
+
+                <Border BorderBrush="{StaticResource WindowBorder}" BorderThickness="0.5" CornerRadius="6,0,0,6">
+                    <StackPanel x:Name="ParametersArea" Orientation="Vertical" Height="350" Width="400">
+
+                    </StackPanel>
+                </Border>
+                
             </StackPanel>
+
+            <GroupBox x:Name="menuButtonArea" 
+                      Style="{StaticResource buttonsBlock}"
+                      Header="Назад"
+                      Grid.Row="2"
+                      Margin="10,0,10,5">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="mainMenuButton" 
+                            HorizontalAlignment="Left" 
+                            Template="{StaticResource menuButtons}"
+                            Click="mainMenuButton_Click">
+                        <Image Source="Resource\Icon.ico" Margin="5" HorizontalAlignment="Center"/>
+                    </Button>
+
+                    <TextBlock Style="{StaticResource menuTextBox}">
+                        Вернуться в основное меню.
+                    </TextBlock>
+                </StackPanel>
+            </GroupBox>
         </Grid>
     </Grid>
 </Window>

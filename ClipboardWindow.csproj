@@ -78,6 +78,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="LoadingElements.cs" />
+    <Compile Include="Models\ClipboardObject.cs" />
+    <Compile Include="Models\CloudObject.cs" />
+    <Compile Include="Models\ObjectTypes.cs" />
     <Compile Include="UserCommands.cs" />
     <Compile Include="Windows\ObjectFromBuffer.xaml.cs">
       <DependentUpon>ObjectFromBuffer.xaml</DependentUpon>
@@ -116,7 +119,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Resource\Topics\tm_Turquoise-dark.xaml">
+    <Page Include="Windows\Resource\Topics\Calus_Selected.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Resource\Topics\Classic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +207,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Windows\Resource\eraser.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Resource\internet.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
