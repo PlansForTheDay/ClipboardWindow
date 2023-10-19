@@ -174,16 +174,16 @@
             <Setter Property="ScrollViewer.Background" Value="Transparent"/>
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="NonObject">
-            <Setter Property="Text" Value="Буфер обмена не содержит объектов"/>
+        <Style TargetType="TextBlock" x:Key="ClipboardMessage">
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Cascadia Code SemiBold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Width" Value="166"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="Height" Value="60"/>
             <Setter Property="Foreground" Value="{StaticResource TopText}"/>
-            <Setter Property="Margin" Value="0,45"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
         </Style>
 
         <Style TargetType="GroupBox" x:Key="buttonsBlock">
@@ -204,6 +204,30 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
 
+
+        <!--<ControlTemplate TargetType="Button" x:Key="SettingsButton">
+            <Grid Background="Transparent">
+                <ContentControl x:Name="content" Content="{TemplateBinding Content}" Opacity="1"
+                                FontFamily="Cascadia Code"
+                                VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Foreground="{StaticResource MenuButtonBorder}"/>
+                
+                <Border x:Name="border" BorderBrush="{StaticResource MenuButtonBorder}" Margin="6,3" BorderThickness="1.5" Height="30" Width="84" CornerRadius="3"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="BorderThickness" Value="0.5"/>
+
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderThickness" Value="2.5"/>
+                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource TopText}"/>
+                    <Setter TargetName="border" Property="Margin" Value="6,0"/>
+                    <Setter TargetName="border" Property="Height" Value="36"/>
+                    <Setter TargetName="content" Property="Foreground" Value="{StaticResource TopText}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>-->
 
         <ControlTemplate TargetType="RadioButton" x:Key="Сhapter">
             <Grid Background="Transparent">

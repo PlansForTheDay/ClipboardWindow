@@ -36,7 +36,7 @@ namespace ClipboardWindow
 
         private void lastObject_Click(object sender, RoutedEventArgs e)
         {
-            LoadingElements.ShowLastObj();
+            ShowWindows.ShowLastObj();
         }
     }
 }

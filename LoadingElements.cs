@@ -7,103 +7,63 @@ using BitmapSource = System.Windows.Media.Imaging.BitmapSource;
 using System.Windows.Media;
 using Clipboard = Windows.ApplicationModel.DataTransfer.Clipboard;
 using ClipboardWindow.Models;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace ClipboardWindow
 {
     internal class LoadingElements
     {
-        public static async void ShowLastObj()
+        public static void LoadObject(object sender, RoutedEventArgs e)
         {
-            var lastObject = Clipboard.GetHistoryItemsAsync().GetResults().Items.First();
-
-            if (lastObject.Content == null)
-            { return; }
-
-            if (lastObject.Content.Contains(DataFormats.Text))
+            Button targetButton = e.Source as Button;
+            if (targetButton.Name == "clipboardText")
             {
-                string text = await SeizureOfData.GetTxt(lastObject);
+                var textblock = targetButton.Content as TextBlock;
 
-                ShowTextObj(text);
+                ShowWindows.ShowTextObj(textblock.Text.ToString());
             }
-            else if (lastObject.Content.Contains(DataFormats.Bitmap))
+            else if (targetButton.Name == "clipboardImage")
             {
-                var image = await SeizureOfData.GetImageFromHistoryItem(lastObject);
+                Image image = (Image)targetButton.Content;
 
-                ShowImageObj(image);
+                ShowWindows.ShowImageObj((BitmapSource)image.Source);
             }
-
         }
-
-        public static void ShowTextObj(string text)
-        {
-            ObjectFromBuffer window = new ObjectFromBuffer
-            {
-                MaxHeight = SystemParameters.FullPrimaryScreenHeight,
-                MaxWidth = SystemParameters.FullPrimaryScreenWidth
-            };
-
-            var textBox = new TextBox()
-            {
-                Style = (Style)Application.Current.Resources["windowTextFromCb"],
-                Text = text,
-            };
-
-            window.ContentAera.Children.Add(textBox);
-            window.Icon = (ImageSource)Application.Current.Resources["Text"];
-            window.SizeToContent = SizeToContent.WidthAndHeight;
-
-            window.Show();
-        }
-
-        public static void ShowImageObj(BitmapSource bitmap)
-        {
-            ObjectFromBuffer window = new ObjectFromBuffer
-            {
-                MaxHeight = SystemParameters.FullPrimaryScreenHeight,
-                MaxWidth = SystemParameters.FullPrimaryScreenWidth
-            };
-
-            var image = new Image()
-            {
-                Style = (Style)Application.Current.Resources["windowImageFromCb"],
-                Source = bitmap,
-                RenderTransform = new ScaleTransform(),
-            };
-            ObjectFromBuffer.ChangeZoom(image);
-
-            window.ContentAera.Children.Add(image);
-            window.Icon = (ImageSource)Application.Current.Resources["Image"];
-
-            window.Height = bitmap.Height + 55;
-            window.Width = bitmap.Width + 20;
-
-            window.MaxHeight = SystemParameters.FullPrimaryScreenHeight;
-            window.MaxWidth = SystemParameters.FullPrimaryScreenWidth;
-
-            window.Show();
-        }
-
 
         public static async void LoadAllObjects(WindowClipboard window)
         {
             var itemsArea = window.ClipboardItemsArea;
-
             itemsArea.Children.Clear();
-
-            var items = Clipboard.GetHistoryItemsAsync();
-
-            if (items.GetResults().Items.Any() == false)
+            if (!Clipboard.IsHistoryEnabled())
             {
                 var message = new TextBlock()
                 {
-                    Style = (Style)Application.Current.Resources["NonObject"]
+                    Style = (Style)Application.Current.Resources["ClipboardMessage"],
+                    Text = "Журнал буфера обмена отключён. Включите его нажав Win+V"
                 };
-
                 itemsArea.Children.Add(message);
                 return;
             }
 
-            foreach (var item in items.GetResults().Items)
+            var items = Clipboard.GetHistoryItemsAsync().GetResults();
+            if (items.Items.Any() == false)
+            {
+                var message = new TextBlock()
+                {
+                    Style = (Style)Application.Current.Resources["ClipboardMessage"],
+                    Text = "Буфер обмена не содержит объектов"
+                };
+                itemsArea.Children.Add(message);
+                return;
+            }
+
+            await CreateObjectsList(items, itemsArea);
+        }
+
+        public static async Task CreateObjectsList(ClipboardHistoryItemsResult items, WrapPanel area)
+        {
+            foreach (var item in items.Items)
             {
                 var itemButton = new Button
                 {
@@ -112,8 +72,6 @@ namespace ClipboardWindow
 
                 if (item.Content.Contains(DataFormats.Text))
                 {
-                    //ClipboardObject clipboardObject = new ClipboardObject(item);
-
                     string text = await SeizureOfData.GetTxt(item);
 
                     itemButton.Name = "clipboardText";
@@ -123,7 +81,7 @@ namespace ClipboardWindow
                         Text = text
                     };
 
-                    WindowClipboard.ClickThis(itemButton);
+                    itemButton.Click += new RoutedEventHandler(LoadObject);
                 }
                 else if (item.Content.Contains(DataFormats.Bitmap))
                 {
@@ -157,8 +115,9 @@ namespace ClipboardWindow
                 //    Style = (Style)Application.Current.Resources["ToolTip"],
                 //};
 
-                itemsArea.Children.Add(itemButton);
+                area.Children.Add(itemButton);
             }
         }
+
     }
 }

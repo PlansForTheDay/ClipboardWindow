@@ -1,7 +1,10 @@
-﻿using System.Windows;
+﻿using System.Runtime.InteropServices;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Cb = Windows.ApplicationModel.DataTransfer.Clipboard;
+using System.Windows.Interop;
 
 namespace ClipboardWindow.Windows
 {
@@ -12,20 +15,7 @@ namespace ClipboardWindow.Windows
     {
         private static void cbItem_Click(object sender, RoutedEventArgs e)
         {
-            Button targetButton = e.Source as Button;
-
-            if (targetButton.Name == "clipboardText")
-            {
-                var textblock = targetButton.Content as TextBlock;
-
-                LoadingElements.ShowTextObj(textblock.Text.ToString());
-            }
-            else if (targetButton.Name == "clipboardImage")
-            {
-                Image image = (Image)targetButton.Content;
-
-                LoadingElements.ShowImageObj((System.Windows.Media.Imaging.BitmapSource)image.Source);
-            }
+            LoadingElements.LoadObject(sender, e);
         }
         public static void ClickThis(Button button)
         {
@@ -68,7 +58,7 @@ namespace ClipboardWindow.Windows
 
         private void lastObjButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadingElements.ShowLastObj();
+            ShowWindows.ShowLastObj();
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)

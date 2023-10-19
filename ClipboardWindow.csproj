@@ -77,10 +77,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HotKey.cs" />
     <Compile Include="LoadingElements.cs" />
     <Compile Include="Models\ClipboardObject.cs" />
     <Compile Include="Models\CloudObject.cs" />
     <Compile Include="Models\ObjectTypes.cs" />
+    <Compile Include="ShowWindows.cs" />
     <Compile Include="UserCommands.cs" />
     <Compile Include="Windows\ObjectFromBuffer.xaml.cs">
       <DependentUpon>ObjectFromBuffer.xaml</DependentUpon>
@@ -210,9 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Windows\Resource\internet.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

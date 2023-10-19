@@ -122,7 +122,8 @@
                            VerticalAlignment="Top" 
                            Grid.Column="2" 
                            MaxWidth="835"
-                           MinWidth="167">
+                           MinWidth="167"
+                           MinHeight="138">
 
                 </WrapPanel>
                 
